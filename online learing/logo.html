@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Space</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  
+  #logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #logo {
+    width: 150px; /* Adjust as needed */
+  }
+  
+  #login-form-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #login-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #login-form button:hover {
+    background-color: darkgreen;
+  }
+</style>
+<body>
+  <div id="logo-container">
+    <img src="logo.png" alt="Study Space Logo" id="logo">
+  </div>
+
+  <div id="login-form-container" style="display: none;">
+    <form id="login-form" action="home.html" method="GET">
+      <h2>Login</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(() => {
+        document.getElementById("logo-container").style.display = "none";
+        document.getElementById("login-form-container").style.display = "block";
+      }, 4000); // 4 seconds delay
+    };
+  </script>
+</body>
+</html>

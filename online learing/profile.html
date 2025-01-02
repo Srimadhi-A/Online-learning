@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Section</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .profile {
+      border: 1px solid #ddd;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #f3f3f3;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+    .progress {
+      height: 20px;
+      background-color: #4caf50;
+      width: 0;
+      border-radius: 4px;
+      transition: width 0.5s;
+    }
+    .course {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile">
+    <h2>Profile</h2>
+    <p><strong>Name:</strong> <span class="user-name">Loading...</span></p>
+    <p><strong>Email:</strong> <span class="user-email">Loading...</span></p>
+    <p><strong>Overall Progress:</strong></p>
+    <div class="progress-bar">
+      <div class="progress overall-progress"></div>
+    </div>
+    <h3>Enrolled Courses:</h3>
+    <div class="courses">
+      <!-- Courses will be populated dynamically -->
+    </div>
+  </div>
+  <script>
+    // Fetch user data from the backend
+    fetch('http://127.0.0.1:5000/profile')
+      .then(response => response.json())
+      .then(data => {
+        // Update profile information
+        document.querySelector('.user-name').textContent = data.name;
+        document.querySelector('.user-email').textContent = data.email;
+        document.querySelector('.overall-progress').style.width = data.progress;
+
+        // Populate courses
+        const coursesContainer = document.querySelector('.courses');
+        data.courses.forEach(course => {
+          const courseDiv = document.createElement('div');
+          courseDiv.classList.add('course');
+          courseDiv.innerHTML = `
+            <p><strong>${course.name}</strong></p>
+            <div class="progress-bar">
+              <div class="progress" style="width: ${course.progress};"></div>
+            </div>
+          `;
+          coursesContainer.appendChild(courseDiv);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>

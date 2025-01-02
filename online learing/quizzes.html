@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Quiz: Web Development</h2>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. What does HTML stand for?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> Hyper Text Markup Language
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> High Text Machine Language
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> Hyperlinks and Text Markup Language
+                </label>
+            </div>
+
+            <div class="question">
+                <p>2. What does CSS stand for?</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> Creative Style Sheets
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> Cascading Style Sheets
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> Computer Style Sheets
+                </label>
+            </div>
+
+            <div class="question">
+                <p>3. What is the correct HTML tag for the largest heading?</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> h1
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> heading
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> h6
+                </label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Submit</button>
+        </form>
+
+        <div id="result"></div>
+        <a href="certificate.html"><button id="certificateButton" disabled>Get Certificate</button></a>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const quizForm = document.getElementById("quizForm");
+            let score = 0;
+
+            // Answer Key
+            const answers = {
+                q1: "a", // Correct answer for question 1
+                q2: "b", // Correct answer for question 2
+                q3: "a", // Correct answer for question 3
+            };
+
+            // Check answers
+            let allAnswered = true;
+            for (let i = 1; i <= 3; i++) {
+                const question = `q${i}`;
+                const selectedAnswer = quizForm.querySelector(`input[name="${question}"]:checked`);
+                
+                if (!selectedAnswer) {
+                    allAnswered = false;
+                } else if (selectedAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Display result
+            const result = document.getElementById("result");
+            result.textContent = `You scored ${score} out of 3`;
+
+            // Enable certificate button if all questions are answered
+            const certificateButton = document.getElementById("certificateButton");
+            if (allAnswered) {
+                certificateButton.disabled = false;
+            } else {
+                certificateButton.disabled = true;
+                alert("Please answer all questions before getting the certificate.");
+            }
+        }
+    </script>
+</body>
+</html>
