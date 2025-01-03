@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- study spcae in navbar -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+   <!--full font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+   <style>
+        /* Custom Styles */
+        body {
+            font-family: "Philosopher", serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-family: "Jersey 15", serif;
+            font-size: 3rem;
+            font-weight:lighter;
+            color: black;
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color:black;
+        }
+        .nav-item{
+            font-family: "Philosopher", serif;
+            font-weight: bolder;
+            font-size: 1.5rem;
+        }
+
+
+    .custom-carousel-img {
+        width: 100%; /* Ensures full width */
+        height: 300px; /* Default height */
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+        .custom-carousel-img {
+            height: 200px; /* Adjust height for smaller screens */
+        }
+    }
+
+
+        .btn-light {
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background-color: #9556ae;
+            color: #000;
+        }
+
+        footer {
+            background-color: #000000;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #9556ae;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .centered-button{
+            display: flex;            /* Enables Flexbox */
+            justify-content: center;  /* Centers horizontally */
+            align-items: center;      /* Centers vertically */
+            height: 10vh;            /* Full height viewport */
+            width: 60vh;
+            margin: 0;    
+            position: relative;
+            border: none;
+            transition: 4s ease-in;
+            z-index: 1;
+        } 
+        .centered-button::before
+        .centered-button::after{
+            
+            position: absolute;
+           content: "";
+            z-index: -1;
+
+        }
+        .centered-button:hover{
+            box-shadow: inset -10.5em 0 0 0 #9556ae, inset 10.5em 0 0 0 #9556ae;
+        }
+
+              /* Custom Styles for the Slider */
+              .slider-container {
+            padding: 20px 0;
+            background-color: #f9f9f9;
+            overflow: hidden; /* Hide overflow for smooth animation */
+        }
+
+        .slider-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .slider-track {
+            display: flex;
+            width: max-content; /* Allows the track to be as wide as its content */
+            animation: moveSlider 15s linear infinite; /* Continuous movement */
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            margin-right: 15px; /* Space between images */
+        }
+
+        .slider-item img {
+            max-width: 150px; /* Adjust image width */
+            max-height: 75px; /* Adjust image height */
+            object-fit: contain;
+        }
+
+        /* Animation Keyframes */
+        @keyframes moveSlider {
+            from {
+                transform: translateX(0); /* Start position */
+            }
+            to {
+                transform: translateX(-100%); /* End position: Move entire slider width */
+            }
+        }
+
+
+        /* tagline */
+         /* Tagline Styles */
+         .tagline {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 50px;
+        }
+
+        .tagline span {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .tagline span:hover {
+            transform: scale(1.2);
+            color: #ad69ca;
+        }
+      
+
+        /* practice section */
+
+                /* Custom Styles to reduce card size */
+                .feature-card {
+            max-width: 250px; /* Reducing the card width */
+            margin: 0 auto; /* Center the cards */
+        }
+
+        .feature-card img {
+            max-height: 150px; /* Limiting the image height */
+            object-fit: cover; /* Ensuring the image fits inside the card */
+        }
+
+        .feature-card-body {
+            padding: 15px; /* Reducing padding inside the card body */
+        }
+
+        .feature-title {
+            font-size: 1.2rem; /* Reducing the font size for card titles */
+        }
+
+        .feature-description {
+            font-size: 0.9rem; /* Reducing the font size for the description */
+        }
+
+        /* Custom Button Style */
+        .btn-custom {
+            background-color: #ad69ca; /* Custom blue color */
+            border-color: #ad69ca; /* Match border color */
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #672583; /* Darker blue on hover */
+            border-color: #672583; /* Darker border on hover */
+            color: white;
+        }
+
+        /* students */
+        .accreditation-slider-container {
+            padding: 20px 0;
+            background-color: #f9f9f9;
+            overflow: hidden; /* Hide overflow for smooth animation */
+        }
+
+        .accreditation-slider-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .accreditation-slider-track {
+            display: flex;
+            gap: 20px; /* Adds space between each item */
+            animation: moveSlider 20s linear infinite; /* Slower movement */
+        }
+
+        .accreditation-slider-item {
+            flex: 0 0 auto;
+        }
+
+        .accreditation-slider-item img {
+            max-width: 150px; /* Adjust image width */
+            max-height: 75px; /* Adjust image height */
+            object-fit: contain;
+        }
+
+        /* Animation Keyframes */
+        @keyframes moveSlider {
+            from {
+                transform: translateX(0); /* Start position */
+            }
+            to {
+                transform: translateX(-100%); /* Move one full track width */
+            }
+        }
+
+        /* card 1 style */
+
+        .custom-btn {
+        background-color:  #ad69ca; /* Green color */
+        border-color: #ad69ca;
+        color: white;
+    }
+
+    .custom-btn:hover {
+        background-color: #672583; /* Darker green for hover effect */
+        border-color: #672583;
+        color: white;
+    }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg "style="background-color:white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- image silder -->
+
+<div id="imageCarousel" class="carousel slide mt-3" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="image1.jpg" class="d-block w-100 custom-carousel-img" alt="Image 1">
+        </div>
+        <div class="carousel-item">
+            <img src="image2.jpg" class="d-block w-100 custom-carousel-img" alt="Image 2">
+        </div>
+        <div class="carousel-item">
+            <img src="image3.jpg" class="d-block w-100 custom-carousel-img" alt="Image 3">
+        </div>
+        <div class="carousel-item">
+            <img src="image4.jpg" class="d-block w-100 custom-carousel-img" alt="Image 4">
+        </div>
+        <div class="carousel-item">
+            <img src="image5.jpg" class="d-block w-100 custom-carousel-img" alt="Image 5">
+        </div>
+    </div>
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div> <br>
+
+<!-- Explore button -->
+<center>
+<button class="centered-button">EXLPORE COURSES</button><br>
+</center>
+ 
+<!-- logo slider -->
+
+    <!-- Slider Section -->
+    <section class="slider-container">
+        <p class="slider-title">We are accredited by</p>
+        <div class="slider-track">
+            <div class="slider-item"><img src="google.jpg" alt="NSDC Logo"></div>
+            <div class="slider-item"><img src="tcs.png" alt="Google Partner Logo"></div>
+            <div class="slider-item"><img src="nsdc.avif" alt="AICTE Logo"></div>
+            <div class="slider-item"><img src="google.jpg" alt="ISO Logo"></div>
+            <div class="slider-item"><img src="tcs.png" alt="Naan Mudhalvan Logo"></div>
+            <!-- Duplicate slides for seamless looping -->
+            <div class="slider-item"><img src="nsdc.avif" alt="NSDC Logo"></div>
+            <div class="slider-item"><img src="google.jpg" alt="Google Partner Logo"></div>
+            <div class="slider-item"><img src="tcs.png" alt="AICTE Logo"></div>
+            <div class="slider-item"><img src="nsdc.avif" alt="ISO Logo"></div>
+            <div class="slider-item"><img src="google.jpg" alt="Naan Mudhalvan Logo"></div>
+        </div>
+    </section>
+
+
+    <!-- what study space offer -->
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">What Study Space Offers You</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200?text=Feature+1" class="card-img-top" alt="Feature 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Feature 1</h5>
+                        <p class="card-text">Study Space offers self-paced courses designed by experts, ensuring that you learn at your own pace with high-quality content and guidance.</p>
+                        <a href="#" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200?text=Feature+2" class="card-img-top" alt="Feature 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Feature 2</h5>
+                        <p class="card-text">At Study Space, you have the opportunity to earn a free certificate upon completing our expertly designed courses, recognizing your dedication and skill acquisition.</p>
+                        <a href="#" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200?text=Feature+3" class="card-img-top" alt="Feature 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Feature 3</h5>
+                        <p class="card-text">Enhance your learning experience with interactive quizzes designed to test and reinforce your knowledge at every step, ensuring you retain key concepts effectively.</p>
+                        <a href="#" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+     <!-- Tagline: Learn, Grow, Succeed -->
+     <div class="tagline">
+        <span>Learn</span>
+        <span>Grow</span>
+        <span>Succeed</span>
+    </div>
+    <!-- practice section -->
+
+    <p style="margin: 40px;">Explore diverse platforms to refine your coding skills and achieve consistent growth in your knowledge. Whether you're just starting out or seeking to enhance your expertise, you can access a variety of resources—from interactive lessons to real-world projects. These platforms offer personalized learning paths, hands-on coding challenges, and expert guidance to ensure you’re mastering key concepts. </p>
+    
+    <div class="feature-container my-5">
+        <div class="row feature-cards-row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col feature-card-column">
+                <div class="feature-card h-100">
+                    <img src="leetcode.png" class="card-img-top" alt="Feature 1">
+                    <div class="card-body feature-card-body">
+                        <h5 class="card-title feature-title">Leet Code</h5>
+                        <p class="card-text feature-description">You can enhance your programming skills by practicing a variety of languages such as Python, C, C++, Java, JavaScript, and more, on LeetCode. The platform offers a vast collection of coding challenges, all available for free, allowing you to sharpen your problem-solving abilities.</p>
+                        <a href="#" class="btn btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col feature-card-column">
+                <div class="feature-card h-100">
+                    <img src="free code camp.jpeg" class="card-img-top" alt="Feature 2">
+                    <div class="card-body feature-card-body">
+                        <h5 class="card-title feature-title">Free Code Camp</h5>
+                        <p class="card-text feature-description">FreeCodeCamp offers a comprehensive platform where you can practice and master web development. With structured courses, real-world projects, and an active community, it provides an ideal environment for enhancing your front-end and back-end development skills at no cost.</p>
+                        <a href="#" class="btn btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col feature-card-column">
+                <div class="feature-card h-100">
+                    <img src="hackerrank.avif" class="card-img-top" alt="Feature 3">
+                    <div class="card-body feature-card-body">
+                        <h5 class="card-title feature-title">HackerRank</h5>
+                        <p class="card-text feature-description">HackerRank is a leading platform where you can practice and improve your programming skills in languages such as Python, C, C++, Java, JavaScript, and more. Offering a variety of challenges and exercises, it enables learners to build proficiency in coding, data structures, .</p>
+                        <a href="#" class="btn btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- students  -->
+     <center>
+    <h1 style="margin: 40px;">Our Students Works At</h1>
+</center>
+
+<section class="accreditation-slider-container">
+
+    <div class="accreditation-slider-track">
+        <div class="accreditation-slider-item"><img src="flipkart.jpg" alt="flipkart Logo"></div>
+        <div class="accreditation-slider-item"><img src="amazon.jpeg" alt="amazon Logo"></div>
+        <div class="accreditation-slider-item"><img src="google.jpg" alt="google Logo"></div>
+        <div class="accreditation-slider-item"><img src="tcs.png" alt="TCS Logo"></div>
+        <div class="accreditation-slider-item"><img src="infosys.jpeg" alt="Infosys Logo"></div>
+        <!-- Duplicate slides for seamless looping -->
+        <div class="accreditation-slider-item"><img src="zoho.jpeg" alt="zoho Logo"></div>
+        <div class="accreditation-slider-item"><img src="wipro.jpg" alt="wipro Logo"></div>
+        <div class="accreditation-slider-item"><img src="ibm.jpeg" alt="IBM Logo"></div>
+        <div class="accreditation-slider-item"><img src="cisco.jpg" alt="Cisco Logo"></div>
+        <div class="accreditation-slider-item"><img src="accenture.png" alt="accenture"></div>
+    </div>
+</section>
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>&copy; 2025 Study Space. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
