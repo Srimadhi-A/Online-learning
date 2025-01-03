@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Enrollment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .course {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .course h3 {
+      margin: 0;
+    }
+    .course p {
+      margin: 5px 0;
+    }
+    .course button {
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .course button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Courses</h1>
+  <div id="courses"></div>
+
+  <script>
+    // Fetch courses from the backend
+    fetch('http://127.0.0.1:5000/courses') // Correct endpoint URL
+      .then(response => response.json())
+      .then(data => {
+        const coursesContainer = document.getElementById('courses');
+        data.forEach(course => {
+          const courseDiv = document.createElement('div');
+          courseDiv.classList.add('course');
+          courseDiv.innerHTML = `
+            <h3>${course.name}</h3>
+            <p>${course.description}</p>
+            <button ${course.enrolled ? 'disabled' : ''} data-id="${course.id}">
+              ${course.enrolled ? 'Enrolled' : 'Enroll'}
+            </button>
+          `;
+          coursesContainer.appendChild(courseDiv);
+        });
+
+        // Add event listeners to enroll buttons
+        const buttons = document.querySelectorAll('.course button');
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            const courseId = parseInt(button.getAttribute('data-id'));
+            enrollInCourse(courseId, button);
+          });
+        });
+      })
+      .catch(error => console.error('Error:', error));
+
+    // Enroll in a course
+    function enrollInCourse(courseId, button) {
+      fetch('http://127.0.0.1:5000/enroll', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ course_id: courseId }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message);
+          if (data.message.includes('Successfully')) {
+            button.textContent = 'Enrolled';
+            button.disabled = true;
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
+</body>
+</html>
