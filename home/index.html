@@ -14,455 +14,7 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-   <style>
-        /* Custom Styles */
-        body {
-            font-family: "Philosopher", serif;
-            background-color: #f8f9fa;
-            
-        }
-
-        .navbar-brand {
-            font-family: "Jersey 15", serif;
-            font-size: 3rem;
-            font-weight:lighter;
-            color: white;
-        }
-
-        .nav-link {
-            transition: color 0.3s ease;
-            color: white;
-        }
-
-        .nav-link:hover {
-            color:gray;
-        }
-        .nav-item{
-            
-            font-size: 1.5rem; 
-            margin: 0 15px; /* Adds space between items */
-            
-        }
-
-
-    .custom-carousel-img {
-        width: 100%; /* Ensures full width */
-        height: 300px; /* Default height */
-        object-fit: cover;
-    }
-
-    @media (max-width: 768px) {
-        .custom-carousel-img {
-            height: 200px; /* Adjust height for smaller screens */
-        }
-    }
-
-
-        .btn-light {
-            font-size: 1rem;
-            padding: 10px 20px;
-            border-radius: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .btn-light:hover {
-            background-color: #9556ae;
-            color: #000;
-        }
-
-        footer {
-            background-color: #000000;
-            color: #adb5bd;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #9556ae;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .centered-button{
-            display: flex;            /* Enables Flexbox */
-            justify-content: center;  /* Centers horizontally */
-            align-items: center;      /* Centers vertically */
-            height: 10vh;            /* Full height viewport */
-            width: 60vh;
-            margin: 0;    
-            position: relative;
-            border: none;
-            transition: 4s ease-in;
-            z-index: 1;
-        } 
-        .centered-button::before
-        .centered-button::after{
-            
-            position: absolute;
-           content: "";
-            z-index: -1;
-
-        }
-        .centered-button:hover{
-            box-shadow: inset -10.5em 0 0 0 #9556ae, inset 10.5em 0 0 0 #9556ae;
-        }
-
-              /* Custom Styles for the Slider */
-              .slider-container {
-            padding: 20px 0;
-            background-color: #f9f9f9;
-            overflow: hidden; /* Hide overflow for smooth animation */
-        }
-
-        .slider-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .slider-track {
-            display: flex;
-            width: max-content; /* Allows the track to be as wide as its content */
-            animation: moveSlider 15s linear infinite; /* Continuous movement */
-        }
-
-        .slider-item {
-            flex: 0 0 auto;
-            margin-right: 15px; /* Space between images */
-        }
-
-        .slider-item img {
-            max-width: 150px; /* Adjust image width */
-            max-height: 75px; /* Adjust image height */
-            object-fit: contain;
-        }
-
-        /* Animation Keyframes */
-        @keyframes moveSlider {
-            from {
-                transform: translateX(0); /* Start position */
-            }
-            to {
-                transform: translateX(-100%); /* End position: Move entire slider width */
-            }
-        }
-
-
-        /* tagline */
-         /* Tagline Styles */
-         .tagline {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 50px;
-        }
-
-        .tagline span {
-            display: inline-block;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .tagline span:hover {
-            transform: scale(1.2);
-            color: #ad69ca;
-        }
-      
-
-        /* practice section */
-
-                /* Custom Styles to reduce card size */
-                .feature-card {
-            max-width: 250px; /* Reducing the card width */
-            margin: 0 auto; /* Center the cards */
-        }
-
-        .feature-card img {
-            max-height: 150px; /* Limiting the image height */
-            object-fit: cover; /* Ensuring the image fits inside the card */
-        }
-
-        .feature-card-body {
-            padding: 15px; /* Reducing padding inside the card body */
-        }
-
-        .feature-title {
-            font-size: 1.2rem; /* Reducing the font size for card titles */
-        }
-
-        .feature-description {
-            font-size: 0.9rem; /* Reducing the font size for the description */
-        }
-
-        /* Custom Button Style */
-        .btn-custom {
-            background-color: #ad69ca; /* Custom blue color */
-            border-color: #ad69ca; /* Match border color */
-            color: white;
-        }
-
-        .btn-custom:hover {
-            background-color: #672583; /* Darker blue on hover */
-            border-color: #672583; /* Darker border on hover */
-            color: white;
-        }
-
-        /* students */
-        .accreditation-slider-container {
-            padding: 20px 0;
-            background-color: #f9f9f9;
-            overflow: hidden; /* Hide overflow for smooth animation */
-        }
-
-        .accreditation-slider-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .accreditation-slider-track {
-            display: flex;
-            gap: 20px; /* Adds space between each item */
-            animation: moveSlider 20s linear infinite; /* Slower movement */
-        }
-
-        .accreditation-slider-item {
-            flex: 0 0 auto;
-        }
-
-        .accreditation-slider-item img {
-            max-width: 150px; /* Adjust image width */
-            max-height: 75px; /* Adjust image height */
-            object-fit: contain;
-        }
-
-        /* Animation Keyframes */
-        @keyframes moveSlider {
-            from {
-                transform: translateX(0); /* Start position */
-            }
-            to {
-                transform: translateX(-100%); /* Move one full track width */
-            }
-        }
-
-        /* card 1 style */
-
-        .custom-btn {
-        background-color:  #ad69ca; /* Green color */
-        border-color: #ad69ca;
-        color: white;
-    }
-
-    .custom-btn:hover {
-        background-color: #672583; /* Darker green for hover effect */
-        border-color: #672583;
-        color: white;
-    }
-    
-
-.progress-container {
-  display: inline-block;
-  margin: 20px;
-  text-align: center;
-}
-
-.progress-circle {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  /* background: conic-gradient(#ddd 0deg, #ddd 360deg); */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.circle-inner {
-  width: 90%;
-  height: 90%;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-}
-
-.progress-value {
-  font-size: 24px;
-  font-weight: bold;
-  color: #9556ae;
-}
-
-.progress-circle[data-percentage] {
-  --percentage: 0;
-  background: conic-gradient(
-    #9556ae calc(var(--percentage) * 3.6deg),
-    #ddd calc(var(--percentage) * 3.6deg)
-  );
-  animation: fill-circle 2s linear forwards;
-}
-
-@keyframes fill-circle {
-  0% {
-    --percentage: 0;
-  }
-  100% {
-    --percentage: var(--end-percentage);
-  }
-}   
-
-/* rating */
-
-
-
-.stats-section {
-    padding: 50px 20px;
-}
-
-.section-title {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.stats-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.stat-box {
-    background-color: #fff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 180px;
-}
-
-.stat-number {
-    font-size: 24px;
-    color: #4caf50;
-    margin: 0;
-}
-
-.stat-label {
-    font-size: 16px;
-    color: #555;
-    margin-top: 10px;
-}
-
-.circle-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 200px;
-}
-
-.circle {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background-color: #e8f5e9;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.circle:after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background-color: #fff;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.percent {
-    position: relative;
-    font-size: 18px;
-    font-weight: bold;
-    color: #4caf50;
-    z-index: 2;
-}
-
-.circle-description {
-    font-size: 14px;
-    color: #555;
-}
-
-@media (max-width: 768px) {
-    .stats-row {
-        flex-direction: column;
-        gap: 20px;
-    }
-}
-
-/* about us */
-
- .containerr {
-        max-width: 900px;
-        margin: 30px;
-        /* background: white; */
-        padding: 20px;
-        
-        /* border-radius: 10px; */
-
-         /* Removed box-shadow  */
-        
-    }
-
-    h2 {
-        color: #9556ae;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #9556ae;
-        display: inline-block;
-        padding-bottom: 5px;
-    }
-
-    p {
-        margin-bottom: 20px;
-        font-size: 1.1em;
-    }
-
-    ul {
-        list-style: none; /* Removed bullets*/ 
-        padding-left: 0;
-        margin-bottom: 20px;
-    }
-
-    ul li {
-        margin-bottom: 10px;
-        font-size: 1.1em;
-        position: relative;
-        padding-left: 0; /* Removed extra padding */
-    }
-
-    a {
-        color: #9556ae;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-    </style>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -514,6 +66,10 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div> <br>
+<!-- Explore button -->
+<center>
+<button class="centered-button">EXPLORE COURSES</button><br>
+</center>
 <!-- about -->
 
 <h1 style="text-align: center;">About Us</h1>
@@ -557,11 +113,6 @@
     </p>
 </div>
 
-
-<!-- Explore button -->
-<center>
-<button class="centered-button">EXLPORE COURSES</button><br>
-</center>
  
 <!-- logo slider -->
 
@@ -580,6 +131,12 @@
             <div class="slider-item"><img src="tcs.png" alt="AICTE Logo"></div>
             <div class="slider-item"><img src="nsdc.avif" alt="ISO Logo"></div>
             <div class="slider-item"><img src="google.jpg" alt="Naan Mudhalvan Logo"></div>
+             <!-- Duplicate slides for seamless looping -->
+             <div class="slider-item"><img src="nsdc.avif" alt="NSDC Logo"></div>
+             <div class="slider-item"><img src="google.jpg" alt="Google Partner Logo"></div>
+             <div class="slider-item"><img src="tcs.png" alt="AICTE Logo"></div>
+             <div class="slider-item"><img src="nsdc.avif" alt="ISO Logo"></div>
+             <div class="slider-item"><img src="google.jpg" alt="Naan Mudhalvan Logo"></div>
         </div>
     </section>
 
@@ -777,14 +334,101 @@
     </div>
 </section>
 
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+
+      <!-- Accordion Item 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            What is the purpose of this e-learning platform?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            This platform offers a wide range of interactive courses, engaging quizzes, and valuable learning resources
+            designed to help students enhance their skills and knowledge across various subjects. Whether you're looking
+            to learn a new skill, deepen your understanding of a topic, or prepare for exams, this platform provides a
+            comprehensive learning experience. The courses are structured to include videos, practical exercises, and
+            assessments, ensuring that students can apply what they learn in real-world scenarios. With user-friendly
+            navigation and a focus on personalized learning, the platform is suitable for learners of all levels, from
+            beginners to advanced.
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion Item 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            How do I register for a course?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can register by clicking on the "Explore Courses" tab, selecting the course you want to join, and
+            clicking the
+            "Enroll" button.
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion Item 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Can I get a certificate after completing a course?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, upon successfully completing a course, you will be awarded a certificate of completion. To earn this
+            certificate, you must go through all the required lessons, participate in any assigned activities or
+            quizzes, and pass the final assessment with the minimum required score. The certificate serves as proof of
+            your achievement and can be downloaded or shared digitally. You can showcase it on your professional
+            profiles, such as LinkedIn, or include it in your resume to demonstrate your newly acquired skills and
+            knowledge.
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion Item 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Are the courses free or paid?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            The courses on this platform are completely free to access. You can enroll in any course without any cost,
+            and all learning materials, quizzes, and resources provided within the course are also free of charge.
+            However, some optional features, such as premium tools, advanced certifications, or additional mentorship
+            services, might require a fee. These optional paid features are clearly marked, so you can decide whether to
+            use them based on your preferences and goals.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 <!-- Footer -->
     <footer class="text-center py-3">
         <p>&copy; 2025 Study Space. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
-        
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
     // Animate the counters
     
@@ -803,7 +447,7 @@
         function animateCircle() {
             if (currentPercent <= percent) {
                 const degrees = (360 * currentPercent) / 100;
-                circle.style.backgroundImage = `conic-gradient(#4caf50 ${degrees}deg, #e8f5e9 0deg)`;
+                circle.style.backgroundImage = `conic-gradient(#ad69ca ${degrees}deg, #e8f5e9 0deg)`;
                 circle.querySelector('.percent').textContent = `${currentPercent}%`;
                 currentPercent++;
                 requestAnimationFrame(animateCircle); // Smooth animation
