@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Example</title>
+    <style>
+        /* Style the layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        iframe {
+            border: none;
+        }
+
+        /* Reduce the height of the first iframe */
+        iframe#frame1 {
+            height: 30%;  /* Set height of first iframe to 30% */
+        }
+
+        iframe#frame2 {
+            height: 70%;  /* Set height of second iframe to 70% */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <iframe src="search.html" name="frame1" id="frame1"></iframe>
+    <iframe src="card.html" name="frame2" id="frame2"></iframe>
+</div>
+
+</body>
+</html>

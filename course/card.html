@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+            gap: 20px; /* Space between cards */
+            max-width: 1200px; /* Max width of container */
+            width: 100%;
+            padding: 20px;
+            overflow: auto; /* Make sure cards wrap within the container */
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .card-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .card-button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 cards per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-container {
+                grid-template-columns: 1fr; /* 1 card per row on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <!-- Repeat the card block for each card -->
+    <div class="card">
+        <img src="WhatsApp Image 2025-01-13 at 17.25.50_b2eab958.jpg" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">1</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="../photo/cisco.jpg" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">2</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">3</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">4</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">5</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">6</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/300x200" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title">7</h2>
+            <p class="card-text">This is an example of a card. You can add any content here, such as images, text, and links.</p>
+            <a href="#" class="card-button">Learn More</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

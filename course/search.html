@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar Example</title>
+    <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);  /* Default to 7 columns */
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 270px;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(5, 1fr);  /* 5 columns on medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);  /* 3 columns on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);  /* 2 columns on mobile screens */
+    }
+
+    .card {
+        width: 220px;  /* Slightly smaller cards on mobile */
+    }
+}
+
+@media (max-width: 400px) {
+    .cards-container {
+        grid-template-columns: 1fr;  /* 1 column on very small screens */
+    }
+
+    .card {
+        width: 100%;  /* Full width on small mobile screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Cards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="search" class="search-bar" placeholder="Search..." onkeyup="searchCards()">
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="./WhatsApp Image 2025-01-13 at 17.25.50_b2eab958.jpg" alt="Image 1">
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/150" alt="Image 2">
+            </div>
+            <!-- Repeat this for all 21 cards -->
+            <!-- You can replace the image sources with your own -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+</body>
+</html>
