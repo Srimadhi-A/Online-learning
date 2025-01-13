@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Frenzy Game</title>
+
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+#fraction-problem {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004d40;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    font-size: 1rem;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+#next-btn {
+    background-color: #2196f3;
+}
+
+#next-btn:hover {
+    background-color: #1976d2;
+}
+
+#reset-btn {
+    margin-top: 20px;
+    background-color: #f44336;
+    color: white;
+}
+
+#reset-btn:hover {
+    background-color: #e53935;
+}
+
+</style>
+<body>
+    <div id="game-container">
+        <h1>Fraction Frenzy Game</h1>
+        <div id="problem-container">
+            <p>Solve the following fraction problem:</p>
+            <h2 id="fraction-problem"></h2>
+        </div>
+        <input type="text" id="user-answer" placeholder="Enter your answer (e.g., 3/4)" />
+        <button id="submit-btn">Submit</button>
+        <div id="result"></div>
+        <div id="next-btn-container">
+            <button id="next-btn" style="display:none;">Next Problem</button>
+        </div>
+        <button id="reset-btn">Reset Game</button>
+    </div>
+
+    <script>
+        // Variables for tracking game state
+let currentProblem = {};
+let score = 0;
+
+// Function to generate a random fraction problem
+function generateProblem() {
+    const num1 = Math.floor(Math.random() * 10) + 1; // Random numerator between 1 and 10
+    const num2 = Math.floor(Math.random() * 10) + 1; // Random denominator between 1 and 10
+    const num3 = Math.floor(Math.random() * 10) + 1; // Random numerator between 1 and 10
+    const num4 = Math.floor(Math.random() * 10) + 1; // Random denominator between 1 and 10
+
+    const operator = ['+', '-', '*', '/'][Math.floor(Math.random() * 4)]; // Random operator
+    let problem, solution;
+
+    if (operator === '+') {
+        problem = `${num1}/${num2} + ${num3}/${num4}`;
+        solution = (num1 * num4 + num2 * num3) + '/' + (num2 * num4); // Fraction addition
+    } else if (operator === '-') {
+        problem = `${num1}/${num2} - ${num3}/${num4}`;
+        solution = (num1 * num4 - num2 * num3) + '/' + (num2 * num4); // Fraction subtraction
+    } else if (operator === '*') {
+        problem = `${num1}/${num2} * ${num3}/${num4}`;
+        solution = (num1 * num3) + '/' + (num2 * num4); // Fraction multiplication
+    } else {
+        problem = `${num1}/${num2} / ${num3}/${num4}`;
+        solution = (num1 * num4) + '/' + (num2 * num3); // Fraction division
+    }
+
+    // Set the current problem and solution
+    currentProblem = { problem, solution };
+    document.getElementById('fraction-problem').textContent = problem;
+    document.getElementById('user-answer').value = '';
+    document.getElementById('result').textContent = '';
+    document.getElementById('next-btn').style.display = 'none';
+}
+
+// Function to check the user's answer
+function checkAnswer() {
+    const userAnswer = document.getElementById('user-answer').value.trim();
+    const result = document.getElementById('result');
+    
+    // Check if the user's answer matches the solution
+    if (userAnswer === currentProblem.solution) {
+        result.textContent = "Correct! Great job!";
+        result.style.color = 'green';
+        score++;
+    } else {
+        result.textContent = `Incorrect. The correct answer is: ${currentProblem.solution}`;
+        result.style.color = 'red';
+    }
+
+    // Show the next button
+    document.getElementById('next-btn').style.display = 'inline-block';
+}
+
+// Function to proceed to the next problem
+document.getElementById('next-btn').addEventListener('click', generateProblem);
+
+// Function to reset the game
+document.getElementById('reset-btn').addEventListener('click', function() {
+    score = 0;
+    generateProblem();
+    document.getElementById('result').textContent = '';
+    document.getElementById('next-btn').style.display = 'none';
+});
+
+// Initialize the game
+generateProblem();
+
+// Add event listener for submitting the answer
+document.getElementById('submit-btn').addEventListener('click', checkAnswer);
+
+// Allow pressing 'Enter' to submit the answer
+document.getElementById('user-answer').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        checkAnswer();
+    }
+});
+
+    </script>
+</body>
+</html>

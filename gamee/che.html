@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pH Adventure</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f3f3f3;
+    }
+    .substance {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>pH Adventure</h1>
+  <div class="substance">Substance: <span id="substance-name">Water</span></div>
+  <div class="buttons">
+    <button onclick="checkAnswer('acid')">Acid</button>
+    <button onclick="checkAnswer('neutral')">Neutral</button>
+    <button onclick="checkAnswer('base')">Base</button>
+  </div>
+  <div id="feedback"></div>
+  <div>Score: <span id="score">0</span></div>
+
+  <script>
+    const substances = [
+  { name: "Water", pH: 7, type: "neutral" },
+  { name: "Lemon Juice", pH: 2, type: "acid" },
+  { name: "Bleach", pH: 12, type: "base" },
+  { name: "Vinegar", pH: 3, type: "acid" },
+  { name: "Soap", pH: 9, type: "base" }
+];
+
+let score = 0;
+let currentSubstance;
+
+function getRandomSubstance() {
+  const randomIndex = Math.floor(Math.random() * substances.length);
+  return substances[randomIndex];
+}
+
+function displaySubstance() {
+  currentSubstance = getRandomSubstance();
+  document.getElementById("substance-name").textContent = currentSubstance.name;
+}
+
+function checkAnswer(answer) {
+  const feedback = document.getElementById("feedback");
+  if (answer === currentSubstance.type) {
+    feedback.textContent = "Correct!";
+    feedback.className = "correct";
+    score++;
+  } else {
+    feedback.textContent = "Incorrect!";
+    feedback.className = "incorrect";
+  }
+  document.getElementById("score").textContent = score;
+  setTimeout(() => {
+    feedback.textContent = "";
+    displaySubstance();
+  }, 1000);
+}
+
+// Initialize game
+displaySubstance();
+
+  </script>
+</body>
+</html>

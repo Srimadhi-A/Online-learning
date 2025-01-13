@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Debugging Challenge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      font-family: monospace;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    .button-container {
+      text-align: right;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Code Debugging Challenge</h1>
+    <p>Fix the following code snippet to make it work correctly:</p>
+    <div>
+      <code>Debug:</code>
+      <pre id="buggy-code">function addNumbers(a, b) {
+  return a + b // missing semicolon
+}
+console.log(addNumbers(5)) // missing second argument
+      </pre>
+    </div>
+    <textarea id="code-editor">// Fix the code here!</textarea>
+    <div class="button-container">
+      <button onclick="runCode()">Run Code</button>
+    </div>
+    <div class="output" id="output">
+      <strong>Output:</strong>
+      <p id="output-text">Your output will appear here.</p>
+    </div>
+  </div>
+
+  <script>
+    const buggyCode = 
+    
+
+    // Pre-fill the editor with buggy code
+    document.getElementById("code-editor").value = buggyCode;
+
+    function runCode() {
+      const codeEditor = document.getElementById("code-editor").value;
+      const output = document.getElementById("output-text");
+
+      try {
+        // Use Function constructor to safely execute user code
+        const func = new Function(codeEditor);
+        const result = func();
+        output.innerHTML = result === undefined ? "Code executed successfully!" : result;
+        output.classList.remove("error");
+        output.classList.add("success");
+      } catch (error) {
+        output.innerHTML = error.message;
+        output.classList.remove("success");
+        output.classList.add("error");
+      }
+    }
+  </script>
+</body>
+</html>
