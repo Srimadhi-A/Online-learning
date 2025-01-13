@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .course-list {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .course-item {
+            margin-bottom: 5px;
+            padding: 5px;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Course Details</h2>
+    <form id="courseForm">
+        <input type="text" id="courseName" placeholder="Course Name" required>
+        <input type="number" id="coursePrice" placeholder="Course Price" required>
+        <button type="submit">Add Course</button>
+    </form>
+
+    <div class="course-list" id="courseList">
+        <!-- Dynamically added courses will appear here -->
+    </div>
+    <button id="checkoutButton" style="margin-top: 10px; display: none;">Proceed to Checkout</button>
+</div>
+
+<script>
+    // Get the list of courses from localStorage or initialize an empty array
+    let courses = JSON.parse(localStorage.getItem('courses')) || [];
+
+    // Function to update the course list display
+    function updateCourseList() {
+        const courseListElement = document.getElementById('courseList');
+        courseListElement.innerHTML = ''; // Clear current list
+
+        // Create and display each course in the list
+        courses.forEach((course, index) => {
+            const courseItem = document.createElement('div');
+            courseItem.classList.add('course-item');
+            courseItem.innerHTML = `${course.name} - $${course.price.toFixed(2)} <button onclick="removeCourse(${index})">Remove</button>`;
+            courseListElement.appendChild(courseItem);
+        });
+
+        // Show the checkout button if there are courses
+        document.getElementById('checkoutButton').style.display = courses.length > 0 ? 'block' : 'none';
+    }
+
+    // Handle the form submission for adding course
+    document.getElementById('courseForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get course details
+        let courseName = document.getElementById('courseName').value;
+        let coursePrice = parseFloat(document.getElementById('coursePrice').value);
+
+        if (!courseName || isNaN(coursePrice) || coursePrice <= 0) {
+            alert("Please enter valid course details");
+            return;
+        }
+
+        // Add the new course to the array
+        courses.push({ name: courseName, price: coursePrice });
+
+        // Save the updated courses array in localStorage
+        localStorage.setItem('courses', JSON.stringify(courses));
+
+        // Update the course list display
+        updateCourseList();
+
+        // Clear the form inputs
+        document.getElementById('courseName').value = '';
+        document.getElementById('coursePrice').value = '';
+    });
+
+    // Function to remove a course from the list
+    function removeCourse(index) {
+        courses.splice(index, 1); // Remove the course from the array
+        localStorage.setItem('courses', JSON.stringify(courses)); // Update localStorage
+        updateCourseList(); // Refresh the display
+    }
+
+    // Redirect to the transaction page when clicking checkout
+    document.getElementById('checkoutButton').addEventListener('click', function() {
+        window.location.href = "transactionInput.html";
+    });
+
+    // Initial call to display any saved courses
+    updateCourseList();
+</script>
+
+</body>
+</html>
