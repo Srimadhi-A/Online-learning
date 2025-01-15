@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css') }}">
+</head>
+<body>
+    {% if instructor %}
+        <h1>{{ instructor[1] }}</h1>
+        <p>{{ instructor[2] }}</p>
+        <img src="{{ url_for('static', filename='images/' + instructor[3]) }}" alt="Instructor Image" width="150">
+        <h2>Contact: {{ instructor[4] }}</h2>
+        <h3>Courses:</h3>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course[2] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>Instructor Not Found</h1>
+        <p>No instructor data is available at the moment. Please check back later.</p>
+    {% endif %}
+</body>
+</html>
