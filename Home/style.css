@@ -109,6 +109,7 @@ h1:hover {
 }
 
 .custom-carousel-img {
+    margin-top: 18vh;
     width: 100%;
     /* Ensures full width */
     height: 300px;
@@ -159,6 +160,50 @@ h1:hover {
 .animate-bounce {
     animation: bounce 1.5s infinite;
 }
+.button1 {
+    width: 11em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+  }
+  
+  .button1::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #ff3064 0%, #fa399045 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+  }
+  
+  .button1:hover::before {
+    width: 11em;
+  }
+  
+  .button1:hover {
+    color: #212121;
+    scale: 1.1;
+    box-shadow: 0 0px 20px rgba(193, 163, 98,0.4);
+  }
+  
+  .button1:active {
+    scale: 1;
+  }
+  
+  
+  
 .btn-light {
     font-size: 1rem;
     padding: 10px 20px;
@@ -290,36 +335,110 @@ footer a:hover {
 }
 
 
-/* practice section */
-
-/* Custom Styles to reduce card size */
-.feature-card {
-    max-width: 250px;
-    /* Reducing the card width */
-    margin: 0 auto;
-    /* Center the cards */
+.platforms {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; /* Space between cards */
 }
 
-.feature-card img {
-    max-height: 150px;
-    /* Limiting the image height */
-    object-fit: cover;
-    /* Ensuring the image fits inside the card */
+.cover {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 12px #000;
+    transform: preserve-3d;
+    perspective: 2000px;
+    border-radius: 10px;
+    overflow: hidden; /* Prevents content overflow */
 }
 
-.feature-card-body {
-    padding: 15px;
-    /* Reducing padding inside the card body */
+.cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: boook;
 }
 
-.feature-title {
-    font-size: 1.2rem;
-    /* Reducing the font size for card titles */
+.boook {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  rgb(167, 98, 121);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+    transform-origin: left;
+    box-shadow: 1px 1px 12px #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
-.feature-description {
-    font-size: 0.9rem;
-    /* Reducing the font size for the description */
+.boook h1 {
+    font-size: 22px;
+    color: #000;
+    margin-bottom: 10px; /* Space below heading */
+}
+
+.boook p {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 15px; /* Space below paragraph */
+}
+
+.boook a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.cover:hover .boook {
+    transform: rotateY(-80deg);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .platforms {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* Reduce space between cards on small screens */
+    }
+
+    .cover {
+        width: 90%;
+        height: auto;
+    }
+
+    .boook {
+        padding: 15px;
+    }
+
+    .boook h1 {
+        font-size: 18px;
+    }
+
+    .boook p {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .boook a {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
 }
 
 /* Custom Button Style */
