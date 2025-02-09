@@ -1,0 +1,50 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensures 3 cards per row */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card h3 {
+    margin: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.card p {
+    margin: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+/* serach bar */
+  
